@@ -1,4 +1,5 @@
 {
+  "version": "1.0.0",
   "name": "davebugg/validony",
   "description": "Simply and powerful data validator",
   "type": "library",
