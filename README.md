@@ -4,6 +4,8 @@ The project provides a tool for data validation.
 Possibilities:
 - Array validation
 - Array validation with similar keys
+## Composer
+`composer require davebugg/validony`
 ## Usage
 ### Dynamic
 Define class and set it up
