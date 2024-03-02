@@ -10,7 +10,6 @@
       "email": "doncineman@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">=8.0.0",
     "ext-json": "*",
