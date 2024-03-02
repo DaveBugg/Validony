@@ -1,5 +1,5 @@
 # Validony
-## Simly and powerfull data valitator
+## Simply and powerful data validator
 The project provides a tool for data validation.
 Possibilities:
 - Array validation
