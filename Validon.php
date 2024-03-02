@@ -6,25 +6,29 @@ class Validon
 {
 
     /**
-     * @param array $post  - $_POST array
+     * Validate an array of fields based on specified rules.
+     *
+     * @param array $post - $_POST array
      * @param array $fields
-     *      example $rules = [
-     *                    'bank' => [Checker::type], (Checker - $checkerClass;)
-     *                    'name' => [Checker::name], // or ['name'] (use string or variable - method's name)
-     *                  ];
-     * @param array|bool $customMessagesMass    - public static array, for examole \Messages::$messages
-     * @param array|bool $customFieldName       - public static array, for examole    \Messages::$filedNames
-     * @param mixed $checkerClass               - checker class with vars and methods to validate, default - Checker::class
-     * @param array $callbackMethod             - callback class and static method to send validate error on $doCallback, init - ['Validator\\Validony', 'AnswerErrorCallback']
-     * @param bool $doCallback                  - call function ($callbackMethod) for return error message if no valid filed found - true/false
-     * @param string $errLanguage               - language to find messages array in $messages and $fieldNames. ( key for messages array, default en)
-     * @param bool $printField                  - for add filed name to error message
-     * @param bool $printData                   - for add field's value to error message
-     * @param bool $getAllErrors                - returns all founded errors after validate all field
-     * @param bool $returnString                - if true - return errors string                                                                   ( getErrors method )
-     * @param bool $getFields                   - if true add error fields names to $errors array, works if $returnString - false                  ( getErrors method )
+     *      Example: $rules = [
+     *          'bank' => [Checker::type], // Checker is the $checkerClass
+     *          'name' => [Checker::name], // or ['name'] (use string or variable - method's name)
+     *      ];
+     * @param array|bool $customMessagesMass - Public static array, for example \Messages::$messages
+     * @param array|bool $customFieldName - Public static array, for example \Messages::$fieldNames
+     * @param mixed $checkerClass - Checker class with variables and methods to validate, default - Checker::class
+     * @param array $callbackMethod - Callback class and static method to send validation error on $doCallback, initialized as ['Validator\\Validony', 'AnswerErrorCallback']
+     * @param bool $doCallback - Call function ($callbackMethod) to return an error message if no valid field is found - true/false
+     * @param string $errLanguage - Language key to find messages array in $messages and $fieldNames (default: en)
+     * @param bool $printField - Add field name to the error message
+     * @param bool $printData - Add field's value to the error message
+     * @param bool $getAllErrors - Return all founded errors after validating all fields
+     * @param bool $returnString - If true, return errors string (getErrors method)
+     * @param bool $getFields - If true, add error fields names to the $errors array (works if $returnString is false - getErrors method)
+     *
      * @return array
      */
+
     public static function CheckData(array $post, array $fields, array|bool $customMessagesMass = false, array|bool $customFieldName = false,
                                      mixed $checkerClass = false, array $callbackMethod = [], bool $doCallback = false, string $errLanguage = 'en',
                                      bool $printField = true, bool $printData = false, bool $getAllErrors = false,
@@ -39,24 +43,28 @@ class Validon
 
 
     /**
+     * Validate an array of fields using a static method specified by name.
+     *
      * @param array $post - $_POST array
-     * @param string $methodName - Static method for validation (return array with rules), ValidateList tries to find the method you type in all classes in folder /Lists/ which locates in lib main path.
-     *                              example: 'TimeValidator'
-     * @param array|bool $customMessagesMass - choose your own path to lists like MAIN_PATH.'/Lists/'
-     * @param array|bool $customFieldName    - path for your classes for Lists, init - false (use Lists in lib path)
-     * @param mixed|false $checkerClass     - checker class with vars and methods to validate, default - Checker::class
-     * @param array $callbackMethod - callback class and static method to send validate error on $doCallback, init - ['Validator\\Validony', 'AnswerErrorCallback']
-     * @param bool $doCallback  - call function ($callbackMethod) for return error message if no valid filed found - true/false
-     * @param string $errLanguage - language to find messages array in $messages and $fieldNames. ( key for messages array, default en)
-     * @param bool|string $pathOfLists - path for your classes for Lists, init - false (use Lists in lib path)
-     * @param bool|string $namespaceOfListsClasses - namespace of your classes locates in Lists folder, init - false (use __NAMESPACE__.'\\Lists\\' )
-     * @param bool $printField - for add filed name to error message
-     * @param bool $printData - for add field's value to error message
-     * @param bool $getAllErrors - returns all founded errors after validate all field
-     * @param bool $returnString  - if true - return errors string                                                               ( getErrors method )
-     * @param bool $getFields - if true add error fields names to $errors array, works if $returnString - false                  ( getErrors method )
+     * @param string $methodName - Static method for validation (returns an array with rules). ValidateList attempts to find the method you specify in all classes in the '/Lists/' folder located in the main path of the lib.
+     *                           Example: 'TimeValidator'
+     * @param array|bool $customMessagesMass - Choose your own path to lists, for example, MAIN_PATH.'/Lists/'
+     * @param array|bool $customFieldName - Path for your classes for Lists, initialized as false (use Lists in the lib path)
+     * @param mixed|false $checkerClass - Checker class with variables and methods to validate, default - Checker::class
+     * @param array $callbackMethod - Callback class and static method to send validation error on $doCallback, initialized as ['Validator\\Validony', 'AnswerErrorCallback']
+     * @param bool $doCallback - Call function ($callbackMethod) to return an error message if no valid field is found - true/false
+     * @param string $errLanguage - Language to find the messages array in $messages and $fieldNames (key for messages array, default: en)
+     * @param bool|string $pathOfLists - Path for your classes for Lists, initialized as false (use Lists in the lib path)
+     * @param bool|string $namespaceOfListsClasses - Namespace of your classes located in the Lists folder, initialized as false (use __NAMESPACE__.'\\Lists\\')
+     * @param bool $printField - Add field name to the error message
+     * @param bool $printData - Add field's value to the error message
+     * @param bool $getAllErrors - Return all found errors after validating all fields
+     * @param bool $returnString - If true, return errors string (getErrors method)
+     * @param bool $getFields - If true, add error fields names to the $errors array (works if $returnString is false - getErrors method)
+     *
      * @return array
      */
+
     public static function ValidateList(array       $post, string $methodName, array|bool $customMessagesMass = false, array|bool $customFieldName = false,
                                         mixed       $checkerClass = false, array $callbackMethod = [], bool $doCallback = false, string $errLanguage = 'en',
                                         bool|string $pathOfLists = false, bool|string $namespaceOfListsClasses = false,
@@ -71,22 +79,25 @@ class Validon
     }
 
     /**
+     * Validate an array of fields based on specified rules.
+     *
      * @param array $post - $_POST array
      * @param array $fields
-     * example:   $fields = [
-     *                  'bank' => [Checker::type]  //method will check 'bank1', 'bank_new', 'bank2' and other exist in POST fields starts with 'bank'
-     *              ];
-     * @param array|bool $customMessagesMass - choose your own path to lists like MAIN_PATH.'/Lists/'
-     * @param array|bool $customFieldName    - path for your classes for Lists, init - false (use Lists in lib path)
-     * @param mixed|false $checkerClass     - checker class with vars and methods to validate, default - Checker::class
-     * @param array $callbackMethod - callback class and static method to send validate error on $doCallback, init - ['Validator\\Validony', 'AnswerErrorCallback']
-     * @param bool $doCallback  - call function ($callbackMethod) for return error message if no valid filed found - true/false
-     * @param string $errLanguage - language to find messages array in $messages and $fieldNames. ( key for messages array, default en)
-     * @param bool $printField - for add filed name to error message
-     * @param bool $printData - for add field's value to error message
-     * @param bool $getAllErrors - returns all founded errors after validate all field
-     * @param bool $returnString  - if true - return errors string                                                               ( getErrors method )
-     * @param bool $getFields - if true add error fields names to $errors array, works if $returnString - false                  ( getErrors method )
+     *   Example: $fields = [
+     *       'bank' => [Checker::type]  // The method will check 'bank1', 'bank_new', 'bank2', and other fields in POST starting with 'bank'
+     *   ];
+     * @param array|bool $customMessagesMass - Choose your own path to lists, for example, MAIN_PATH.'/Lists/'
+     * @param array|bool $customFieldName - Path for your classes for Lists, initialized as false (use Lists in the lib path)
+     * @param mixed|false $checkerClass - Checker class with variables and methods to validate, default - Checker::class
+     * @param array $callbackMethod - Callback class and static method to send validation error on $doCallback, initialized as ['Validator\\Validony', 'AnswerErrorCallback']
+     * @param bool $doCallback - Call function ($callbackMethod) to return an error message if no valid field is found - true/false
+     * @param string $errLanguage - Language to find messages array in $messages and $fieldNames (key for messages array, default: en)
+     * @param bool $printField - Add field name to the error message
+     * @param bool $printData - Add field's value to the error message
+     * @param bool $getAllErrors - Return all found errors after validating all fields
+     * @param bool $returnString - If true, return errors string (getErrors method)
+     * @param bool $getFields - If true, add error field names to the $errors array (works if $returnString is false - getErrors method)
+     *
      * @return array
      */
     public static function CheckLikeFieldsData(array $post, array $fields, array|bool $customMessagesMass = false, array|bool $customFieldName = false,

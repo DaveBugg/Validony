@@ -61,7 +61,7 @@ class Validony
      * @param int $case
      * Method for return error message
      */
-    public static function AnswerErrorCallback($MSG, $case = 1)
+    public static function AnswerErrorCallback($MSG, int $case = 1): void
     {
         switch ($case)
         {
@@ -107,7 +107,7 @@ class Validony
         return $string ? ['errors' => implode(', ', $this->errors)] : ($getFields ? ['errors' => $this->errors, 'fields' => $this->error_fields] : ['errors' => $this->errors] );
     }
 
-    public function sendError($msg, $type = 1)
+    public function sendError($msg, $type = 1): void
     {
         $class = $this->classCallback;
         $method = $this->methodCallback;
@@ -117,45 +117,51 @@ class Validony
     }
 
     /**
-     * @param string $method
-     * @param bool|string $pathOfLists
-     * @param bool $callback
-     * @param bool $printField
-     * @param bool $printData
-     * @param bool $getAllErrors
+     * Validator class for handling field validation using rules and error messages.
+     *
+     * @param string $method Static method for validation (returns an array with rules).
+     * @param bool|string $pathOfLists Path for your classes for Lists, initialized as false (use Lists in lib path).
+     * @param bool|string $namespaceOfListsClasses Namespace of your classes located in the Lists folder, initialized as false (use __NAMESPACE__.'\\Lists\\').
+     * @param bool $callback Call function for returning an error message if no valid field is found - true/false.
+     * @param bool $printField Add field name to the error message.
+     * @param bool $printData Add field's value to the error message.
+     * @param bool $getAllErrors Return all found errors after validating all fields.
      *
      * Example:
-     *
      * Create class:
-     * Params: 1 - post array with data to validate. 2 - error messages array, init - \Validator\Messages::$messages
-     *         3 - array for rename fields in answer, init - Messages::$filedNames,
-     *         4 - checker class with vars and methods to validate, default - Checker::class
-     *         5 - callback class and static method to send validate error on callback, init - ['Validator\\Validony', 'AnswerErrorCallback']
-     *         6 - language to find messages array in $messages and $fieldNames.
+     * Params:
+     *  1 - post array with data to validate.
+     *  2 - error messages array, initialized as \Validator\Messages::$messages.
+     *  3 - array for renaming fields in the answer, initialized as Messages::$filedNames.
+     *  4 - checker class with variables and methods to validate, default - Checker::class.
+     *  5 - callback class and static method to send validation error -> callback, initialized as ['Validator\\Validony', 'AnswerErrorCallback'].
+     *  6 - language to find messages array in $messages and $fieldNames.
      *
-     *         $validator = (new Validony($_POST, \Validator\Messages::$messages, \Validator\Messages::$filedNames , Checker::class, ['Validator\\Validony', 'AnswerErrorCallback'], 'en'));
+     * $validator = (new Validony($_POST, \Validator\Messages::$messages, \Validator\Messages::$filedNames , \Validator\Checker::class, ['Validator\\Validony', 'AnswerErrorCallback'], 'en'));
      *
      * Call Method:
-     * Params: 1 - Static method for validation (return array with rules),
-     *             ValidateList tries to find the method you type in all classes in folder /Lists/ which locates in lib main path.
-     *             You can choose your own path in param 2.
-     *         2 - path for your classes for Lists, init - false (use Lists in lib path)
-     *         3 - namespace of your classes locates in Lists folder, init - false (use __NAMESPACE__.'\\Lists\\' )
-     *         4 - $callback - call function for return error message if no valid filed found - true/false
-     *         5 - $printField - for add filed name to error message
-     *         6 - $printData - for add field's value to error message
-     *         7 - $getAllErrors - returns all founded errors after validate all field
+     * Params:
+     *  1 - Static method for validation (returns an array with rules),
+     *      ValidateList tries to find the method you type in all classes in the folder /Lists/ located in the lib main path.
+     *      You can choose your path in param 2.
+     *  2 - path for your classes for Lists, initialized as false (use Lists in lib path).
+     *  3 - namespace of your classes located in the Lists folder, initialized as false (use __NAMESPACE__.'\\Lists\\' ).
+     *  4 - $callback - call function for returning an error message if no valid field is found - true/false.
+     *  5 - $printField - add field name to the error message.
+     *  6 - $printData - add field's value to the error message.
+     *  7 - $getAllErrors - return all founded errors after validating all fields.
      *
-     *         $validator->ValidateList('TimeValidator', false, false, true, true, true);
+     * $validator->ValidateList('TimeValidator', false, false, true, true, true);
      *
      * Check IsValid: $valid = $validator->isValid();
      *
      * Get Errors:
-     * Params: 1 - $string - use to return errors as string or array
-     *         2 - $getFields - use to get fields which called error on validation process
-     *         if 1 - false, 2 -true : returns associative mass with errors and fields names
+     * Params:
+     *  1 - $string - use to return errors as a string or array.
+     *  2 - $getFields - use to get fields which called error on the validation process.
+     *      if 1 - false, 2 -true: returns an associative array with errors and fields names.
      *
-     *              $errors = $validator->getErrors(false, true);
+     * $errors = $validator->getErrors(false, true);
      */
     public function ValidateList(string $method, bool|string $pathOfLists = false, bool|string $namespaceOfListsClasses = false, bool $callback = false, bool $printField = true, bool $printData = false, bool $getAllErrors = true): void
     {
@@ -195,47 +201,55 @@ class Validony
 
 
     /**
-     * @param array $fields
-     * @param mixed $CallBack
-     * @param mixed $printField
-     * @param mixed $printData
-     * @param bool $getAllErrors
+     * Validate an array of fields based on specified rules.
+     *
+     * @param array $fields Array of rules to validate.
+     * @param mixed $CallBack Callback function or class/method for handling validation errors.
+     * @param mixed $printField Option to include field names in the error message (true/false).
+     * @param mixed $printData Option to include field values in the error message (true/false).
+     * @param bool $getAllErrors Option to return all found errors after validating all fields (true/false).
      *
      * Example:
-     *
-     * Create rules mass:
-     *          $fields = [
-     *               'time' =>  [Checker::required, Checker::time],
-     *               'test' =>  [Checker::checkBoxOnOff], //- string var with name of static method in your class Checker
-     *               'name' => ['required', 'name'] //- static method with the same name should be exist in your class Checker
-     *         ];
+     * Create rules array:
+     * $fields = [
+     *      'time' => [Checker::required, Checker::time],
+     *      'test' => [Checker::checkBoxOnOff], // String variable with the name of a static method in your Checker class
+     *      'name' => ['required', 'name'], // Static method with the same name should exist in your Checker class
+     * ];
      *
      * Create class:
-     * Params: 1 - post array with data to validate. 2 - error messages array, init - \Validator\Messages::$messages
-     *         3 - array for rename fields in answer, init - Messages::$filedNames,
-     *         4 - checker class with vars and methods to validate, init - Checker::class
-     *         5 - callback class and static method to send validate error on callback, init - ['Validator\\Validony', 'AnswerErrorCallback']
-     *         6 - language to find messages array in $messages and $fieldNames.
+     * Params:
+     *  1 - post array with data to validate.
+     *  2 - error messages array, initialized as \Validator\Messages::$messages.
+     *  3 - array for renaming fields in the answer, initialized as Messages::$filedNames.
+     *  4 - checker class with variables and methods to validate, initialized as Checker::class.
+     *  5 - callback class and static method to send validate error on callback, initialized as ['Validator\\Validony', 'AnswerErrorCallback'].
+     *  6 - language to find messages array in $messages and $fieldNames.
      *
-     *         $validator = (new Validony($_POST, \Validator\Messages::$messages, \Validator\Messages::$filedNames , Checker::class, ['Validator\\Validony', 'AnswerErrorCallback'], 'en'));
+     * $validator = (new Validony($_POST, \Validator\Messages::$messages, \Validator\Messages::$filedNames, Checker::class, ['Validator\\Validony', 'AnswerErrorCallback'], 'en'));
      *
      * Call Method:
-     * Params: 1 - $fields - array of rules
-     *         2 - $callback - call function for return error message if no valid filed found - true/false
-     *         3 - $printField - for add filed name to error message - true/false
-     *         4 - $printData - for add field's value to error message - true/false
-     *         5 - $getAllErrors - returns all founded errors after validate all field - true/false
+     * Params:
+     *  1 - $fields - array of rules.
+     *  2 - $CallBack - callback function for returning an error message if no valid field is found (true/false).
+     *  3 - $printField - include field names in the error message (true/false).
+     *  4 - $printData - include field values in the error message (true/false).
+     *  5 - $getAllErrors - return all founded errors after validating all fields (true/false).
      *
-     *         $validator->CheckData($init, false, true, false, false);
+     * $validator->CheckData($fields, false, true, false, false);
      *
-     * Check IsValid: $valid = $validator->isValid();
+     * Check IsValid:
+     * $valid = $validator->isValid();
      *
      * Get Errors:
-     * Params: 1 - $string - use to return errors as string or array
-     *         2 - $getFields - use to get fields which called error on validation process
-     *         if 1 - false, 2 -true : returns associative mass with errors and fields names
+     * Params:
+     *  1 - $string - use to return errors as a string or array.
+     *  2 - $getFields - use to get fields which called error on validation process.
+     *      if 1 - false, 2 - true: returns an associative array with errors and field names.
      *
-     *         $errors = $validator->getErrors(false, true);
+     * $errors = $validator->getErrors(false, true);
+     *
+     * @return bool|void
      */
     public function CheckData(array $fields, mixed $CallBack = false, mixed $printField = true, mixed $printData = false, bool $getAllErrors = false)
     {
@@ -295,7 +309,7 @@ class Validony
      *  Check what should be returned as answer when filed\fields no valid and returns it.
      */
 
-    public function buildMessageProcess($field, $printField, $printData, $CallBack, $getAllErrors, $way = 'field')
+    public function buildMessageProcess($field, $printField, $printData, $CallBack, $getAllErrors, string $way = 'field'): bool
     {
         $data = $this->data[$field] ?? null;
         $error = Messages::getMessageField($field, $data, $printField, $printData, $this->err_language, $way, $this->customMessagesMass, $this->customFieldName);
@@ -314,46 +328,53 @@ class Validony
 
 
     /**
+     * Validate a set of fields based on specified rules.
+     *
      * @param array $fields
      *
-     * Allow to check a couple fields with one rule
+     * Allow to check a couple fields with one rule.
+     *
      * Example:
      * Create array with rules:
      *   $fields = [
-     *          'bank' => [C::type]  //method will check 'bank1', 'bank_new', 'bank2' and other exist in POST fields starts with 'bank'
-     *    ];
+     *      'bank' => [C::type]  // The method will check 'bank1', 'bank_new', 'bank2', and other fields in POST that start with 'bank'
+     *   ];
      *
      * Create class:
-     * Params: 1 - post array with data to validate. 2 - error messages array, init - \Validator\Messages::$messages
-     *         3 - array for rename fields in answer, init - Messages::$filedNames,
-     *         4 - checker class with vars and methods to validate, init - Checker::class
-     *         5 - callback class and static method to send validate error on callback, init - ['Validator\\Validony', 'AnswerErrorCallback']
-     *         6 - language to find messages array in $messages and $fieldNames.
+     * Params:
+     *  1 - post array with data to validate.
+     *  2 - error messages array, initialized as \Validator\Messages::$messages.
+     *  3 - array for renaming fields in the answer, initialized as Messages::$filedNames.
+     *  4 - checker class with variables and methods to validate, initialized as Checker::class.
+     *  5 - callback class and static method to send validate error on callback, initialized as ['Validator\\Validony', 'AnswerErrorCallback'].
+     *  6 - language to find messages array in $messages and $fieldNames.
      *
-     *         $validator = (new Validony($_POST, \Validator\Messages::$messages, \Validator\Messages::$filedNames , Checker::class, ['Validator\\Validony', 'AnswerErrorCallback'], 'en'));
+     * $validator = (new Validony($_POST, \Validator\Messages::$messages, \Validator\Messages::$filedNames, Checker::class, ['Validator\\Validony', 'AnswerErrorCallback'], 'en'));
      *
      * Call Method:
-     * Params: 1 - $fields - array of rules
-     *         2 - $callback - call function for return error message if no valid filed found - true/false
-     *         3 - $printField - for add filed name to error message - true/false
-     *         4 - $printData - for add field's value to error message - true/false
-     *         5 - $getAllErrors - returns all founded errors after validate all field - true/false
+     * Params:
+     *  1 - $fields - array of rules.
+     *  2 - $callback - call function for returning an error message if no valid field is found - true/false.
+     *  3 - $printField - add field name to the error message - true/false.
+     *  4 - $printData - add field's value to the error message - true/false.
+     *  5 - $getAllErrors - return all founded errors after validating all fields - true/false.
      *
-     *         It will take each key from $fields and validate with it's rules
-     *         all keys from $POST array which starts as $fields[key]
-     *         $validator->CheckLikeFieldsData($fields, false, true, true, true);
+     * It will take each key from $fields and validate with its rules
+     * all keys from the $POST array which start as $fields[key].
+     * $validator->CheckLikeFieldsData($fields, false, true, true, true);
      *
      * Check IsValid:
-     *         $valid = $validator->isValid();
+     * $valid = $validator->isValid();
      *
      * Get Errors:
-     * Params: 1 - $string - use to return errors as string or array
-     *         2 - $getFields - use to get fields which called error on validation process
-     *         if 1 - false, 2 -true : returns associative mass with errors and fields names
+     * Params:
+     *  1 - $string - use to return errors as a string or array.
+     *  2 - $getFields - use to get fields which called error on the validation process.
+     *      if 1 - false, 2 - true: returns an associative array with errors and field names.
      *
-     *         $errors = $validator->getErrors(false, true);
-     *
+     * $errors = $validator->getErrors(false, true);
      */
+
     public function CheckLikeFieldsData(array $fields, bool $CallBack = false, bool $printField = true, $printData = false, $getAllErrors = false): bool
     {
         foreach ($fields as $rK => $rV)

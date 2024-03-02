@@ -1,1 +1,56 @@
 # Validony
+## Simly and powerfull data valitator
+The project provides a tool for data validation.
+Possibilities:
+- Array validation
+- Array validation with similar keys
+## Usage
+### Dynamic
+Define class and set it up
+```php
+$validator = (new Validony(
+$_POST,                                             // Array to validate 
+\DavesValidator\Validator\Messages::$messages,      // Array with error messages
+\DavesValidator\Validator\Messages::$filedNames,    // Array to rename fields in answer
+\DavesValidator\Validator\Checker::class,           // Class which contains validation methods
+['DavesValidator\\Validator\\Validony', 'AnswerErrorCallback'], // Class and static method to send validation error
+'en'));// Language for errors (the keys of ...\Messages::$messages or your Class for messages)
+```
+Call it
+```php
+//в папке Lists, нужно лишь вернуть массив проверки
+$validator->ValidateList(
+'TimeValidator', //Method to return the validation rules 
+false, // Path to your Lists Directory
+'DavesValidator\\Validator\\Lists\\', // Namespace of your classes contains in Lists Folder 
+false, // Run Callback functions if found\fields with no valid data
+true, // Print field's name in error message
+true, // Print field's value in error message
+false); // Return all errors in one iteration
+```
+Get result and errors
+```php
+$valid = $validator->isValid(); // valid or not
+$errors = $validator->getErrors(
+false, // return string || array
+true); // return array of fields in errors array if true
+```
+Validation for array with similar keys:
+```php
+$init = [ 
+    'password' =>  [C::required, C::password] // Rules
+    ];
+$_POST = [                                   // Data
+    'password_1' => '42',
+    'password2' => '42',
+    'password_abcd' => 'abcd'
+];
+$validatorLists = (new ValidateLists($_POST));
+$validatorLists->CheckData($init,false,true,true,true);
+$valid = $validatorLists->isValid();
+$errors = $validatorLists->getErrors(false, true);
+```
+### Static
+The static class is less appealing to use, but you can use it by referring to the PHPDoc inside the class.
+### Additional
+Explore the Checker and MainLists classes for a more detailed understanding.
