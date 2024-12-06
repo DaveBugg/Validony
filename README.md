@@ -37,7 +37,7 @@ $errors = $validator->getErrors(
 false, // return string || array
 true); // return array of fields in errors array if true
 ```
-Validation for array with similar keys:
+Validation for an array with similar keys:
 ```php
 $init = [ 
     'password' =>  [C::required, C::password] // Rules
