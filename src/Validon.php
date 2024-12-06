@@ -1,6 +1,6 @@
 <?php
 
-namespace DavesValidator\Validator;
+namespace DavesValidator;
 
 class Validon
 {

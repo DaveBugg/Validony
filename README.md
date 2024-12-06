@@ -12,10 +12,10 @@ Define class and set it up
 ```php
 $validator = (new Validony(
 $_POST,                                             // Array to validate 
-\DavesValidator\Validator\Messages::$messages,      // Array with error messages
-\DavesValidator\Validator\Messages::$filedNames,    // Array to rename fields in answer
-\DavesValidator\Validator\Checker::class,           // Class which contains validation methods
-['DavesValidator\\Validator\\Validony', 'AnswerErrorCallback'], // Class and static method to send validation error
+\DavesValidator\Messages::$messages,      // Array with error messages
+\DavesValidator\Messages::$filedNames,    // Array to rename fields in answer
+\DavesValidator\Checker::class,           // Class which contains validation methods
+['DavesValidator\\Validony', 'AnswerErrorCallback'], // Class and static method to send validation error
 'en'));// Language for errors (the keys of ...\Messages::$messages or your Class for messages)
 ```
 Call it
@@ -24,7 +24,7 @@ Call it
 $validator->ValidateList(
 'TimeValidator', //Method to return the validation rules 
 false, // Path to your Lists Directory
-'DavesValidator\\Validator\\Lists\\', // Namespace of your classes contains in Lists Folder 
+'DavesValidator\\Lists\\', // Namespace of your classes contains in Lists Folder 
 false, // Run Callback functions if found\fields with no valid data
 true, // Print field's name in error message
 true, // Print field's value in error message

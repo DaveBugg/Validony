@@ -1,5 +1,5 @@
 <?php
-namespace DavesValidator\Validator;
+namespace DavesValidator;
 
 class Checker
 {

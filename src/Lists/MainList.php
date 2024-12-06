@@ -1,9 +1,9 @@
 <?php
 
 
-namespace DavesValidator\Validator\Lists;
+namespace DavesValidator\Lists;
 
-use DavesValidator\Validator\Checker;
+use DavesValidator\Checker;
 
 class MainList
 {
