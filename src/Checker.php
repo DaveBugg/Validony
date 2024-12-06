@@ -13,7 +13,6 @@ class Checker
     public const email = 'email';
     public const phone = 'phone';
     public const country2 = 'country2';
-    public const country3 = 'country3';
 
     public const number = 'number';
     public const is_bool = 'is_bool';

@@ -87,8 +87,8 @@ class Messages
         }
         $err = $printData
             ? ($printField
-                ? $mass[0]."'".$field."'".rtrim($mass[1]).": ".$data
-                : $mass[0].rtrim($mass[1]).": ".$data)
+                ? $mass[0]."'".$field."'".rtrim($mass[1]).": ".mb_convert_encoding($data, "UTF-8")
+                : $mass[0].rtrim($mass[1]).": ".mb_convert_encoding($data, "UTF-8"))
             : ($printField
                 ? $mass[0]."'".$field."'".$mass[1]
                 : $mass[0].$mass[1]);

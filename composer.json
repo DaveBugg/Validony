@@ -1,23 +1,24 @@
 {
   "name": "davebugg/validony",
   "description": "Simply and powerful data validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
       "name": "Dave",
-      "email": "doncineman@gmail.com"
+      "email": "doncineman2@gmail.com"
     }
   ],
   "require": {
     "php": ">=8.0.0",
     "ext-json": "*",
-    "ext-fileinfo": "*"
+    "ext-fileinfo": "*",
+    "ext-mbstring": "*"
   },
   "autoload": {
     "psr-4": {
-      "DavesValidator\\Validator\\": "DavesValidator\\Validator\\"
+      "DavesValidator\\": "DavesValidator\\"
     }
   }
 }
