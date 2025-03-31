@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DavesValidator;
+namespace DavesValidator\Validator;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;

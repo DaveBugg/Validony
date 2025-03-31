@@ -9,13 +9,14 @@ Possibilities:
 ## Usage
 ### Dynamic
 Define class and set it up
+
 ```php
 $validator = (new Validony(
 $_POST,                                             // Array to validate 
-\DavesValidator\Messages::$messages,      // Array with error messages
-\DavesValidator\Messages::$filedNames,    // Array to rename fields in answer
-\DavesValidator\Checker::class,           // Class which contains validation methods
-['DavesValidator\\Validony', 'AnswerErrorCallback'], // Class and static method to send validation error
+\DavesValidator\Validator\Messages::$messages,      // Array with error messages
+\DavesValidator\Validator\Messages::$filedNames,    // Array to rename fields in answer
+\DavesValidator\Validator\Checker::class,           // Class which contains validation methods
+['DavesValidator\\Validator\\Validony', 'AnswerErrorCallback'], // Class and static method to send validation error
 'en'));// Language for errors (the keys of ...\Messages::$messages or your Class for messages)
 ```
 Call it

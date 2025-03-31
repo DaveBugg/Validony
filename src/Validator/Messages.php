@@ -1,6 +1,6 @@
 <?php
 
-namespace DavesValidator;
+namespace DavesValidator\Validator;
 
 
 class Messages
