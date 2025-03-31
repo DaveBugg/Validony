@@ -20,7 +20,7 @@ $_POST,                                             // Array to validate
 ```
 Call it
 ```php
-//в папке Lists, нужно лишь вернуть массив проверки
+//in Lists folder, needs to return an array for check
 $validator->ValidateList(
 'TimeValidator', //Method to return the validation rules 
 false, // Path to your Lists Directory

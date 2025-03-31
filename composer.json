@@ -1,7 +1,7 @@
 {
   "name": "davebugg/validony",
   "description": "Simply and powerful data validator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "DavesValidator\\": "DavesValidator\\"
+      "DavesValidator\\": "src/"
     }
   }
 }
