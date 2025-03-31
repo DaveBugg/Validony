@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "DavesValidator\\Validator": "src/"
+      "DavesValidator\\Validator": "src/Validator"
     }
   }
 }
