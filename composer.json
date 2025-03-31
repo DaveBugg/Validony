@@ -1,7 +1,7 @@
 {
   "name": "davebugg/validony",
   "description": "Simply and powerful data validator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "library",
   "license": "MIT",
   "authors": [
