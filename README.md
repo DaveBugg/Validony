@@ -589,16 +589,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-If you have questions or issues:
+Need help? We're here for you:
 
-- Create an [Issue](https://github.com/yourusername/validony/issues)
-- Check the [Wiki](https://github.com/yourusername/validony/wiki)
-- Contact us via email
+- Create an [Issue](https://github.com/DaveBugg/Validony/issues)
+- Check the [Wiki](https://github.com/DaveBugg/Validony/wiki)
+- Email: doncineman2@gmail.com
 
 ## 🔗 Links
 
-- [Documentation](https://github.com/yourusername/validony/wiki)
-- [Examples](https://github.com/yourusername/validony/tree/main/examples)
+- [Documentation](https://github.com/DaveBugg/Validony/wiki)
 - [Changelog](CHANGELOG.md)
 
 ---
