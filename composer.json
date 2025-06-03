@@ -1,13 +1,16 @@
 {
   "name": "davebugg/validony",
-  "description": "Simply and powerful data validator",
-  "version": "1.0.4",
+  "description": "Powerful and flexible PHP data validator with customizable rules, error messages, and callback functions",
+  "version": "2.0.0",
   "type": "library",
   "license": "MIT",
+  "keywords": ["validation", "validator", "php", "data-validation", "form-validation", "array-validation", "rules", "callback"],
+  "homepage": "https://github.com/DaveBugg/Validony",
   "authors": [
     {
       "name": "Dave",
-      "email": "doncineman2@gmail.com"
+      "email": "doncineman2@gmail.com",
+      "role": "Developer"
     }
   ],
   "require": {
@@ -20,5 +23,10 @@
     "psr-4": {
       "DavesValidator\\Validator\\": "src/Validator"
     }
-  }
+  },
+  "support": {
+    "issues": "https://github.com/DaveBugg/Validony/issues",
+    "source": "https://github.com/DaveBugg/Validony"
+  },
+  "minimum-stability": "stable"
 }
