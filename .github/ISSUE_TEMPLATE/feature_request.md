@@ -1,8 +1,8 @@
 ---
 name: Feature Request
 about: Suggest an idea for Validony
-title: '[FEATURE] '
-labels: 'enhancement'
+title: "[FEATURE] "
+labels: enhancement
 assignees: ''
 
 ---
@@ -45,4 +45,4 @@ If you have ideas about how this feature could be implemented, please share them
 Describe specific use cases where this feature would be beneficial:
 1. Use case 1: ...
 2. Use case 2: ...
-3. Use case 3: ... 
+3. Use case 3: ...

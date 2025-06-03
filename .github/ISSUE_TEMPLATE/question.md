@@ -1,8 +1,8 @@
 ---
 name: Question
 about: Ask a question about Validony usage
-title: '[QUESTION] '
-labels: 'question'
+title: "[QUESTION] "
+labels: question
 assignees: ''
 
 ---
@@ -32,4 +32,4 @@ $validator = new Validony($_POST);
 - **Framework:** [e.g. Laravel 9.x, Symfony 6.x, or None]
 
 ## 📋 Additional Context
-Add any other context about your question here. 
+Add any other context about your question here.
