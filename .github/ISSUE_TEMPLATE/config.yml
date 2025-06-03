@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://github.com/DaveBugg/Validony/blob/main/README.md
+    about: Check the comprehensive documentation first
+  - name: 💬 Discussions
+    url: https://github.com/DaveBugg/Validony/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 📧 Email Support
+    url: mailto:doncineman2@gmail.com
+    about: Contact the maintainer directly for private matters 
