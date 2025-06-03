@@ -1,8 +1,8 @@
 ---
 name: Bug Report
 about: Create a report to help us improve Validony
-title: '[BUG] '
-labels: 'bug'
+title: "[BUG] "
+labels: bug
 assignees: ''
 
 ---
@@ -46,4 +46,4 @@ Add any other context about the problem here, such as:
 - Related issues
 
 ## 🔍 Possible Solution
-If you have an idea of what might be causing the issue or how to fix it, please describe it here. 
+If you have an idea of what might be causing the issue or how to fix it, please describe it here.
