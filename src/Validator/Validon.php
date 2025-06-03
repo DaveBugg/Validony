@@ -23,21 +23,19 @@ class Validon
      * @param bool $printField - Add field name to the error message
      * @param bool $printData - Add field's value to the error message
      * @param bool $getAllErrors - Return all founded errors after validating all fields
-     * @param bool $returnString - If true, return errors string (getErrors method)
-     * @param bool $getFields - If true, add error fields names to the $errors array (works if $returnString is false - getErrors method)
+     * @param bool $getFields - If true, add error fields names to the $errors array (getErrors method)
      *
      * @return array
      */
 
     public static function CheckData(array $post, array $fields, array|bool $customMessagesMass = false, array|bool $customFieldName = false,
                                      mixed $checkerClass = false, array $callbackMethod = [], bool $doCallback = false, string $errLanguage = 'en',
-                                     bool $printField = true, bool $printData = false, bool $getAllErrors = false,
-                                     bool $returnString = false, bool $getFields = false): array
+                                     bool $printField = true, bool $printData = false, bool $getAllErrors = false, bool $getFields = false): array
     {
-        $validator = new Validony($post, $customMessagesMass, $customFieldName , $checkerClass, $callbackMethod, $errLanguage);
-        $validator->CheckData($fields, $doCallback, $printField, $printData, $getAllErrors);
+        $validator = new Validony($post, $customMessagesMass, $customFieldName, $checkerClass, $callbackMethod, $errLanguage, $printField, $printData, $getAllErrors, $doCallback);
+        $validator->CheckData($fields);
         $valid = $validator->isValid();
-        $errors = $validator->getErrors($returnString, $getFields);
+        $errors = $validator->getErrors($getFields);
         return [$valid, $errors];
     }
 
@@ -59,8 +57,7 @@ class Validon
      * @param bool $printField - Add field name to the error message
      * @param bool $printData - Add field's value to the error message
      * @param bool $getAllErrors - Return all found errors after validating all fields
-     * @param bool $returnString - If true, return errors string (getErrors method)
-     * @param bool $getFields - If true, add error fields names to the $errors array (works if $returnString is false - getErrors method)
+     * @param bool $getFields - If true, add error fields names to the $errors array (getErrors method)
      *
      * @return array
      */
@@ -68,13 +65,12 @@ class Validon
     public static function ValidateList(array       $post, string $methodName, array|bool $customMessagesMass = false, array|bool $customFieldName = false,
                                         mixed       $checkerClass = false, array $callbackMethod = [], bool $doCallback = false, string $errLanguage = 'en',
                                         bool|string $pathOfLists = false, bool|string $namespaceOfListsClasses = false,
-                                        bool        $printField = true, bool $printData = false, bool $getAllErrors = false,
-                                        bool        $returnString = false, bool $getFields = false): array
+                                        bool        $printField = true, bool $printData = false, bool $getAllErrors = false, bool $getFields = false): array
     {
-        $validator = new Validony($post, $customMessagesMass, $customFieldName , $checkerClass, $callbackMethod, $errLanguage);
-        $validator->ValidateList($methodName, $pathOfLists, $namespaceOfListsClasses, $doCallback, $printField, $printData, $getAllErrors);
+        $validator = new Validony($post, $customMessagesMass, $customFieldName, $checkerClass, $callbackMethod, $errLanguage, $printField, $printData, $getAllErrors, $doCallback);
+        $validator->ValidateList($methodName, $pathOfLists, $namespaceOfListsClasses);
         $valid = $validator->isValid();
-        $errors = $validator->getErrors($returnString, $getFields);
+        $errors = $validator->getErrors($getFields);
         return [$valid, $errors];
     }
 
@@ -95,20 +91,18 @@ class Validon
      * @param bool $printField - Add field name to the error message
      * @param bool $printData - Add field's value to the error message
      * @param bool $getAllErrors - Return all found errors after validating all fields
-     * @param bool $returnString - If true, return errors string (getErrors method)
-     * @param bool $getFields - If true, add error field names to the $errors array (works if $returnString is false - getErrors method)
+     * @param bool $getFields - If true, add error field names to the $errors array (getErrors method)
      *
      * @return array
      */
     public static function CheckLikeFieldsData(array $post, array $fields, array|bool $customMessagesMass = false, array|bool $customFieldName = false,
                                                mixed $checkerClass = false, array $callbackMethod = [], bool $doCallback = false, string $errLanguage = 'en',
-                                               bool  $printField = true, bool $printData = false, bool $getAllErrors = false,
-                                               bool  $returnString = false, bool $getFields = false): array
+                                               bool  $printField = true, bool $printData = false, bool $getAllErrors = false, bool $getFields = false): array
     {
-        $validator = new Validony($post, $customMessagesMass, $customFieldName , $checkerClass, $callbackMethod, $errLanguage);
-        $validator->CheckLikeFieldsData($fields, $doCallback, $printField, $printData, $getAllErrors);
+        $validator = new Validony($post, $customMessagesMass, $customFieldName, $checkerClass, $callbackMethod, $errLanguage, $printField, $printData, $getAllErrors, $doCallback);
+        $validator->CheckLikeFieldsData($fields);
         $valid = $validator->isValid();
-        $errors = $validator->getErrors($returnString, $getFields);
+        $errors = $validator->getErrors($getFields);
         return [$valid, $errors];
     }
 }
