@@ -5,6 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2024-12-19
+
+### 🚀 Major Changes
+- **BREAKING CHANGE**: Refactored error message structure from arrays to strings with placeholders
+- **BREAKING CHANGE**: Error messages now use `:field` placeholder instead of array format
+
+### 🔧 Changed
+- **Message Structure**: Changed from `["Field ", " does not exist"]` to `"Field :field does not exist"`
+- **Method `getMessageField()`**: Updated logic to use `str_replace(':field', $fieldReplacement, $messageTemplate)`
+- **All Languages**: Updated message structure for English, Italian, Spanish, German, French, and Russian
+- **Documentation**: Updated README.md examples to reflect new message format
+
+### ✨ Benefits of New Structure
+- **Conciseness**: Single string instead of two-element array
+- **Readability**: Immediately see how the final message will look
+- **Standardization**: Using `:field` placeholder follows common practices
+- **Simplicity**: Easier to create and maintain messages
+
+### 📚 Migration Guide for Messages
+
+**Before (2.0.0):**
+```php
+public static array $messages = [
+    'en' => [
+        'required' => ["Field ", " does not exist"],
+        'field' => ["Field ", " contains wrong data"]
+    ]
+];
+```
+
+**After (2.0.1):**
+```php
+public static array $messages = [
+    'en' => [
+        'required' => "Field :field does not exist",
+        'field' => "Field :field contains wrong data"
+    ]
+];
+```
+
+### ⚠️ Breaking Change Notice
+If you have custom messages in the old array format, you must update them to the new string format with `:field` placeholder.
+
+### 📄 Files Changed
+- `src/Validator/Messages.php` - Updated message structure and processing logic
+- `README.md` - Updated documentation examples
+- `CHANGELOG_MESSAGES.md` - Added detailed change documentation
+
 ## [2.0.0] - 2024-12-19
 
 ### 🚀 Major Changes

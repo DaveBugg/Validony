@@ -8,38 +8,38 @@ class Messages
     // Dictionary for error messages
     public static array $messages = [
         'en' => [
-            'required' => [ "Field ", " does not exist"],
-            'field' => ["Field "," contains wrong data "],
-            'method' => ["Method ", " doesn't exist"]
+            'required' => "Field :field does not exist",
+            'field' => "Field :field contains wrong data",
+            'method' => "Method :field doesn't exist"
         ],
         'it' => [
-            'required' => ["Campo ", " non esiste"],
-            'field' => ["Campo ", " contiene dati errati"],
-            'method' => ["Metodo ", " non esiste"]
+            'required' => "Campo :field non esiste",
+            'field' => "Campo :field contiene dati errati",
+            'method' => "Metodo :field non esiste"
         ],
 
         'es' => [
-            'required' => ["Campo ", " no existe"],
-            'field' => ["Campo ", " contiene datos incorrectos"],
-            'method' => ["Método ", " no existe"]
+            'required' => "Campo :field no existe",
+            'field' => "Campo :field contiene datos incorrectos",
+            'method' => "Método :field no existe"
         ],
 
         'de' => [
-            'required' => ["Feld ", " existiert nicht"],
-            'field' => ["Feld ", " enthält falsche Daten"],
-            'method' => ["Methode ", " existiert nicht"]
+            'required' => "Feld :field existiert nicht",
+            'field' => "Feld :field enthält falsche Daten",
+            'method' => "Methode :field existiert nicht"
         ],
 
         'fr' => [
-            'required' => ["Champ ", " n'existe pas"],
-            'field' => ["Champ ", " contient des données incorrectes"],
-            'method' => ["Méthode ", " n'existe pas"]
+            'required' => "Champ :field n'existe pas",
+            'field' => "Champ :field contient des données incorrectes",
+            'method' => "Méthode :field n'existe pas"
         ],
 
         'ru' => [
-            'required' => ["Поле ", " не существует"],
-            'field' => ["Поле ", " содержит неверные данные"],
-            'method' => ["Метод ", " не существует"]
+            'required' => "Поле :field не существует",
+            'field' => "Поле :field содержит неверные данные",
+            'method' => "Метод :field не существует"
         ],
 
         /// ...your language
@@ -79,19 +79,20 @@ class Messages
     public static function getMessageField($field, $data, $printField, $printData, $lang, $way, $customMessagesMass, $customFieldName ): string
     {
         $massLang = self::getMessages($lang, $customMessagesMass);
-        $mass = $massLang[$way];
+        $messageTemplate = $massLang[$way];
         $field = self::getCustomFieldName($field, $lang, $customFieldName);
-        if ($data === null)
-        {
+        
+        if ($data === null) {
             $printData = false;
         }
-        $err = $printData
-            ? ($printField
-                ? $mass[0]."'".$field."'".rtrim($mass[1]).": ".mb_convert_encoding($data, "UTF-8")
-                : $mass[0].rtrim($mass[1]).": ".mb_convert_encoding($data, "UTF-8"))
-            : ($printField
-                ? $mass[0]."'".$field."'".$mass[1]
-                : $mass[0].$mass[1]);
+        
+        $fieldReplacement = $printField ? "'{$field}'" : $field;
+        $err = str_replace(':field', $fieldReplacement, $messageTemplate);
+        
+        if ($printData) {
+            $err .= ": " . mb_convert_encoding($data, "UTF-8");
+        }
+        
         $res = preg_replace("/\s+/u", " ", $err);
         return $res;
     }

@@ -138,36 +138,36 @@ class MyMessages
 {
     public static array $messages = [
         'en' => [
-            'required' => ['The ', ' field is required'],
-            'email' => ['The ', ' must be a valid email address'],
-            'password' => ['The ', ' must be at least 8 characters long'],
-            'numeric' => ['The ', ' must be a number'],
-            'minLength' => ['The ', ' must be at least :min characters long'],
-            'maxLength' => ['The ', ' must not exceed :max characters']
+            'required' => 'The :field field is required',
+            'email' => 'The :field must be a valid email address',
+            'password' => 'The :field must be at least 8 characters long',
+            'numeric' => 'The :field must be a number',
+            'minLength' => 'The :field must be at least :min characters long',
+            'maxLength' => 'The :field must not exceed :max characters'
         ],
         'es' => [
-            'required' => ['El campo ', ' es obligatorio'],
-            'email' => ['El ', ' debe ser una dirección de email válida'],
-            'password' => ['La ', ' debe tener al menos 8 caracteres'],
-            'numeric' => ['El ', ' debe ser un número'],
-            'minLength' => ['El ', ' debe tener al menos :min caracteres'],
-            'maxLength' => ['El ', ' no debe exceder :max caracteres']
+            'required' => 'El campo :field es obligatorio',
+            'email' => 'El :field debe ser una dirección de email válida',
+            'password' => 'La :field debe tener al menos 8 caracteres',
+            'numeric' => 'El :field debe ser un número',
+            'minLength' => 'El :field debe tener al menos :min caracteres',
+            'maxLength' => 'El :field no debe exceder :max caracteres'
         ],
         'fr' => [
-            'required' => ['Le champ ', ' est requis'],
-            'email' => ['Le ', ' doit être une adresse email valide'],
-            'password' => ['Le ', ' doit contenir au moins 8 caractères'],
-            'numeric' => ['Le ', ' doit être un nombre'],
-            'minLength' => ['Le ', ' doit contenir au moins :min caractères'],
-            'maxLength' => ['Le ', ' ne doit pas dépasser :max caractères']
+            'required' => 'Le champ :field est requis',
+            'email' => 'Le :field doit être une adresse email valide',
+            'password' => 'Le :field doit contenir au moins 8 caractères',
+            'numeric' => 'Le :field doit être un nombre',
+            'minLength' => 'Le :field doit contenir au moins :min caractères',
+            'maxLength' => 'Le :field ne doit pas dépasser :max caractères'
         ],
         'ru' => [
-            'required' => ['Поле ', ' обязательно для заполнения'],
-            'email' => ['Поле ', ' должно содержать корректный email адрес'],
-            'password' => ['Поле ', ' должно содержать минимум 8 символов'],
-            'numeric' => ['Поле ', ' должно быть числом'],
-            'minLength' => ['Поле ', ' должно содержать минимум :min символов'],
-            'maxLength' => ['Поле ', ' не должно превышать :max символов']
+            'required' => 'Поле :field обязательно для заполнения',
+            'email' => 'Поле :field должно содержать корректный email адрес',
+            'password' => 'Поле :field должно содержать минимум 8 символов',
+            'numeric' => 'Поле :field должно быть числом',
+            'minLength' => 'Поле :field должно содержать минимум :min символов',
+            'maxLength' => 'Поле :field не должно превышать :max символов'
         ]
     ];
 
@@ -591,8 +591,6 @@ if ($validator->isValid()) {
 
 ### 3. CheckLikeFieldsData() - Similar Fields Validation
 
-Validates fields whose names start with a specific prefix.
-
 ```php
 public function CheckLikeFieldsData(
     array $fields,                  // Rules for field prefixes
@@ -902,36 +900,36 @@ class MyMessages
 {
     public static array $messages = [
         'en' => [
-            'required' => ['The ', ' field is required'],
-            'email' => ['The ', ' must be a valid email address'],
-            'password' => ['The ', ' must be at least 8 characters long'],
-            'numeric' => ['The ', ' must be a number'],
-            'minLength' => ['The ', ' must be at least :min characters long'],
-            'maxLength' => ['The ', ' must not exceed :max characters']
+            'required' => 'The :field field is required',
+            'email' => 'The :field must be a valid email address',
+            'password' => 'The :field must be at least 8 characters long',
+            'numeric' => 'The :field must be a number',
+            'minLength' => 'The :field must be at least :min characters long',
+            'maxLength' => 'The :field must not exceed :max characters'
         ],
         'es' => [
-            'required' => ['El campo ', ' es obligatorio'],
-            'email' => ['El ', ' debe ser una dirección de email válida'],
-            'password' => ['La ', ' debe tener al menos 8 caracteres'],
-            'numeric' => ['El ', ' debe ser un número'],
-            'minLength' => ['El ', ' debe tener al menos :min caracteres'],
-            'maxLength' => ['El ', ' no debe exceder :max caracteres']
+            'required' => 'El campo :field es obligatorio',
+            'email' => 'El :field debe ser una dirección de email válida',
+            'password' => 'La :field debe tener al menos 8 caracteres',
+            'numeric' => 'El :field debe ser un número',
+            'minLength' => 'El :field debe tener al menos :min caracteres',
+            'maxLength' => 'El :field no debe exceder :max caracteres'
         ],
         'fr' => [
-            'required' => ['Le champ ', ' est requis'],
-            'email' => ['Le ', ' doit être une adresse email valide'],
-            'password' => ['Le ', ' doit contenir au moins 8 caractères'],
-            'numeric' => ['Le ', ' doit être un nombre'],
-            'minLength' => ['Le ', ' doit contenir au moins :min caractères'],
-            'maxLength' => ['Le ', ' ne doit pas dépasser :max caractères']
+            'required' => 'Le champ :field est requis',
+            'email' => 'Le :field doit être une adresse email valide',
+            'password' => 'Le :field doit contenir au moins 8 caractères',
+            'numeric' => 'Le :field doit être un nombre',
+            'minLength' => 'Le :field doit contenir au moins :min caractères',
+            'maxLength' => 'Le :field ne doit pas dépasser :max caractères'
         ],
         'ru' => [
-            'required' => ['Поле ', ' обязательно для заполнения'],
-            'email' => ['Поле ', ' должно содержать корректный email адрес'],
-            'password' => ['Поле ', ' должно содержать минимум 8 символов'],
-            'numeric' => ['Поле ', ' должно быть числом'],
-            'minLength' => ['Поле ', ' должно содержать минимум :min символов'],
-            'maxLength' => ['Поле ', ' не должно превышать :max символов']
+            'required' => 'Поле :field обязательно для заполнения',
+            'email' => 'Поле :field должно содержать корректный email адрес',
+            'password' => 'Поле :field должно содержать минимум 8 символов',
+            'numeric' => 'Поле :field должно быть числом',
+            'minLength' => 'Поле :field должно содержать минимум :min символов',
+            'maxLength' => 'Поле :field не должно превышать :max символов'
         ]
     ];
 
