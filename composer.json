@@ -1,7 +1,6 @@
 {
   "name": "davebugg/validony",
   "description": "Powerful and flexible PHP data validator with customizable rules, error messages, and callback functions",
-  "version": "2.0.0",
   "type": "library",
   "license": "MIT",
   "keywords": ["validation", "validator", "php", "data-validation", "form-validation", "array-validation", "rules", "callback"],
