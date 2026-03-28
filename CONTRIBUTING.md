@@ -206,7 +206,6 @@ We especially welcome contributions in these areas:
 
 ## ❓ Questions?
 
-- 📧 **Email**: doncineman2@gmail.com
 - 💬 **GitHub Discussions**: [Start a discussion](https://github.com/DaveBugg/Validony/discussions)
 - 🐛 **Issues**: [Create an issue](https://github.com/DaveBugg/Validony/issues)
 
