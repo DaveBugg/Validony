@@ -1106,7 +1106,6 @@ Need help? We're here for you:
 
 - Create an [Issue](https://github.com/DaveBugg/Validony/issues)
 - Check the [Wiki](https://github.com/DaveBugg/Validony/wiki)
-- Email: doncineman2@gmail.com
 
 ## 🔗 Links
 
